@@ -82,12 +82,6 @@ pipeline{
             steps{
                script{
                    
-                    sh 'sudo usermod -aG docker $USER'
-                    sh 'docker pull docker.bintray.io/jfrog/artifactory-oss:latest'
-                    sh 'sudo mkdir -p /jfrog/artifactory'
-                    sh 'sudo chown -R 1030 /jfrog/'
-                    sh 'docker run --name artifactory -d -p 8081:8081 -p 8082:8082 -v /jfrog/artifactory:/var/opt/jfrog/artifactory docker.bintray.io/jfrog/artifactory-oss:latest'
-                    sh ''
                     sh 'curl -X PUT -u admin -T /home/ubuntu/Java_app_3.0/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar http://<EC2IP>:8082/artifactory/example-repo-local/'
 
 
